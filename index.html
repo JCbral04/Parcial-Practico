@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador Interactivo de Datos CSV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid" role="main">
+        <header class="text-center my-4" role="banner">
+            <h1 class="display-4">Visualizador Interactivo de Datos CSV</h1>
+            <div class="form-check form-switch d-flex justify-content-center gap-3 align-items-center">
+                <label for="darkModeToggle" class="d-flex align-items-center gap-2">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span class="visually-hidden">Modo oscuro</span>
+                    <input class="form-check-input" type="checkbox" id="darkModeToggle" role="switch" aria-label="Alternar entre modo claro y oscuro">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                </label>
+            </div>
+        </header>
+
+        <div class="row" role="region" aria-label="Sección principal">
+            <!-- CSV Input Area -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5">Ingresar Datos CSV</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="csvInput" class="form-label">Pegue su CSV aquí: <span class="text-muted small">(ejemplo: Nombre,Edad,Ciudad)</span></label>
+                            <textarea class="form-control font-monospace" id="csvInput" rows="10" 
+                                placeholder="Ejemplo:
+Nombre,Edad,Ciudad
+Juan,25,Madrid
+María,30,Barcelona"
+                                aria-label="Área de texto para pegar datos CSV"
+                                aria-describedby="csvHelp"
+                                required></textarea>
+                            <div id="csvHelp" class="form-text">Asegúrese de que la primera fila contenga los encabezados de las columnas.</div>
+                            <div class="form-text">O cargue un archivo CSV:</div>
+                            <label for="fileInput" class="visually-hidden">Seleccionar archivo CSV</label>
+                            <input type="file" 
+                                   class="form-control mt-2" 
+                                   id="fileInput" 
+                                   accept=".csv"
+                                   aria-describedby="fileHelp">
+                            <div id="fileHelp" class="form-text">Seleccione un archivo CSV para cargar los datos.</div>
+                        </div>
+                        <button id="processBtn" class="btn btn-primary">Procesar CSV</button>
+                        <div id="csvError" class="alert alert-danger mt-2 d-none" role="alert"></div>
+                    </div>
+                </div>
+
+                <!-- Chart Configuration -->
+                <div class="card mb-4" id="chartConfig" style="display: none;">
+                    <div class="card-header">
+                        <h2 class="h5">Configuración del Gráfico</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="xAxis" class="form-label">Eje X (Etiquetas):</label>
+                                <select class="form-select" id="xAxis"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="yAxis" class="form-label">Eje Y (Valores):</label>
+                                <select class="form-select" id="yAxis"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="chartType" class="form-label">Tipo de Gráfico:</label>
+                                <select class="form-select" id="chartType">
+                                    <option value="bar">Barras Verticales</option>
+                                    <option value="horizontalBar">Barras Horizontales</option>
+                                    <option value="line">Líneas</option>
+                                    <option value="pie">Torta</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Acciones:</label>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" id="updateChartBtn" aria-label="Actualizar gráfico">
+                                        <i class="fas fa-sync me-2" aria-hidden="true"></i>Actualizar Gráfico
+                                    </button>
+                                    <button class="btn btn-success" id="exportChartBtn" aria-label="Exportar imagen del gráfico">
+                                        <i class="fas fa-download me-2" aria-hidden="true"></i>Exportar Imagen
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Visualization -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2 class="h5 mb-0" id="tablePreviewTitle">Vista Previa de Datos</h2>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" 
+                                   type="checkbox" 
+                                   id="tableFilterToggle"
+                                   aria-controls="filterModal"
+                                   aria-expanded="false">
+                            <label class="form-check-label" for="tableFilterToggle">Filtros</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="tableContainer" class="table-responsive">
+                            <p class="text-muted text-center my-5">Ingrese datos CSV para ver la vista previa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Gráfico</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="chartContainer" class="position-relative" style="min-height: 300px;">
+                            <canvas id="chartCanvas"></canvas>
+                            <p class="text-muted text-center my-5">Seleccione los ejes y haga clic en 'Actualizar Gráfico'</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filtros de Columna</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="filterModalBody">
+                    <!-- Dynamic filters will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="applyFiltersBtn">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Make Chart available globally
+        window.Chart = Chart;
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
