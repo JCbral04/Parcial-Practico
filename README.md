@@ -4,12 +4,12 @@ Una aplicación web de una sola página (SPA) que permite visualizar y analizar 
 
 ##  Características
 
-- ** Visualización de datos** en tablas interactivas
-- ** Gráficos dinámicos** con múltiples tipos de visualización
-- ** Modo oscuro/claro** con preferencia guardada
-- ** Diseño responsivo** para todos los dispositivos
-- ** Accesibilidad mejorada** (WCAG 2.1)
-- ** Exportación** de gráficos como imágenes PNG
+- ** Visualización de datos ** en tablas interactivas
+- ** Gráficos dinámicos ** con múltiples tipos de visualización
+- ** Modo oscuro/claro ** con preferencia guardada
+- ** Diseño responsivo ** para todos los dispositivos
+- ** Accesibilidad mejorada ** (WCAG 2.1)
+- ** Exportación ** de gráficos como imágenes PNG
 - ** Procesamiento rápido** de archivos CSV
 
 ##  Tecnologías Utilizadas
