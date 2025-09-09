@@ -2,17 +2,17 @@
 
 Una aplicación web de una sola página (SPA) que permite visualizar y analizar datos en formato CSV de manera interactiva. La aplicación incluye funcionalidades de visualización de datos en tablas y gráficos, con opciones de personalización y accesibilidad.
 
-## 🚀 Características
+##  Características
 
-- **📊 Visualización de datos** en tablas interactivas
-- **📈 Gráficos dinámicos** con múltiples tipos de visualización
-- **🌓 Modo oscuro/claro** con preferencia guardada
-- **📱 Diseño responsivo** para todos los dispositivos
-- **♿ Accesibilidad mejorada** (WCAG 2.1)
-- **📤 Exportación** de gráficos como imágenes PNG
-- **⚡ Procesamiento rápido** de archivos CSV
+- ** Visualización de datos** en tablas interactivas
+- ** Gráficos dinámicos** con múltiples tipos de visualización
+- ** Modo oscuro/claro** con preferencia guardada
+- ** Diseño responsivo** para todos los dispositivos
+- ** Accesibilidad mejorada** (WCAG 2.1)
+- ** Exportación** de gráficos como imágenes PNG
+- ** Procesamiento rápido** de archivos CSV
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **Frontend:**
   - HTML5 semántico
@@ -22,7 +22,7 @@ Una aplicación web de una sola página (SPA) que permite visualizar y analizar 
   - [Bootstrap 5.3](https://getbootstrap.com/) - Estilos y componentes
   - [Font Awesome 6](https://fontawesome.com/) - Iconos
 
-## 📦 Instalación
+##  Instalación
 
 1. Clona el repositorio:
    ```bash
@@ -30,7 +30,7 @@ Una aplicación web de una sola página (SPA) que permite visualizar y analizar 
    ```
 2. Abre el archivo `index.html` en tu navegador web
 
-## 🎯 Uso
+##  Uso
 
 1. **Cargar datos**:
    - Pega tus datos CSV en el área de texto
@@ -50,7 +50,7 @@ Una aplicación web de una sola página (SPA) que permite visualizar y analizar 
    - Cambia entre modo claro y oscuro con el interruptor en la esquina superior derecha
    - Exporta el gráfico como imagen con el botón correspondiente
 
-## 🏗️ Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 csv-visualizer/
@@ -64,7 +64,7 @@ csv-visualizer/
 └── README.md           # Documentación
 ```
 
-## ♿ Accesibilidad
+##  Accesibilidad
 
 Hemos implementado varias características de accesibilidad:
 
@@ -75,7 +75,7 @@ Hemos implementado varias características de accesibilidad:
 - Compatibilidad con lectores de pantalla
 - Tamaño de fuente escalable
 
-## 🎨 Personalización
+##  Personalización
 
 Puedes personalizar la apariencia modificando las variables CSS en `css/styles.css`:
 
@@ -99,7 +99,7 @@ Puedes personalizar la apariencia modificando las variables CSS en `css/styles.c
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## 🤝 Contribuir
+##  Contribuir
 
 Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
 
@@ -109,16 +109,9 @@ Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
 4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
 5. Abre un Pull Request
 
-## 📞 Soporte
-
-Para soporte, por favor abre un issue en el repositorio.
-
 ---
 
-Desarrollado con ❤️ para facilitar la visualización de datos CSV.
-- [Font Awesome](https://fontawesome.com/) para iconos
-
-## 📦 Requisitos Previos
+##  Requisitos Previos
 
 - Navegador web moderno (Chrome, Firefox, Safari, Edge)
 - Node.js (solo para desarrollo y contribuciones)
@@ -238,29 +231,4 @@ Puedes desplegar esta aplicación en cualquier servicio de alojamiento estático
 - No soporta archivos con codificaciones diferentes a UTF-8
 - El rendimiento puede verse afectado con conjuntos de datos muy grandes
 
-## Mejoras Futuras
 
-- [ ] Soporte para múltiples conjuntos de datos
-- [ ] Más tipos de gráficos (dispersión, radar, etc.)
-- [ ] Exportación de datos procesados
-- [ ] Integración con APIs de almacenamiento en la nube
-- [ ] Soporte para más formatos de datos (Excel, JSON, etc.)
-
-## Contribución
-
-Las contribuciones son bienvenidas. Por favor, lee las [pautas de contribución](CONTRIBUTING.md) antes de enviar un pull request.
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## Créditos
-
-- Desarrollado por [Tu Nombre]
-- Iconos por [Font Awesome](https://fontawesome.com/)
-- Gráficos por [Chart.js](https://www.chartjs.org/)
-- Estilos con [Bootstrap 5](https://getbootstrap.com/)
-
----
-
-*Este proyecto fue creado como parte del curso de Ingeniería Web.*
