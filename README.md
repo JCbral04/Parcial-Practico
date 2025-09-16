@@ -26,7 +26,7 @@ Una aplicación web de una sola página (SPA) que permite visualizar y analizar 
 
 1. Clona el repositorio:
    ```bash
-   git clone [URL_DEL_REPOSITORIO]
+   git clone (https://github.com/JCbral04/Parcial-Practico)
    ```
 2. Abre el archivo `index.html` en tu navegador web
 
